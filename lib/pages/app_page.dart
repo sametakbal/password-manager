@@ -61,11 +61,19 @@ class _AppPageState extends State<AppPage> {
         elevation: 20.0,
         iconSize: 35.0,
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xff011ED8),
+        selectedItemColor: Color(0xff1856e3),
         unselectedItemColor: Color(0xffb1cefe),
         selectedFontSize: 16.0,
         onTap: _onItemTapped,
         selectedLabelStyle: TextStyle(fontFamily: 'Roboto'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffe9f1fd),
+        onPressed: () {},
+        child: Icon(
+          Icons.add,
+          color: Color(0xff1856e3),
+        ),
       ),
     );
   }
