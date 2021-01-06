@@ -67,14 +67,16 @@ class _AppPageState extends State<AppPage> {
         onTap: _onItemTapped,
         selectedLabelStyle: TextStyle(fontFamily: 'Roboto'),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffe9f1fd),
-        onPressed: () {},
-        child: Icon(
-          Icons.add,
-          color: Color(0xff1856e3),
-        ),
-      ),
+      floatingActionButton: _selectedIndex == 0
+          ? FloatingActionButton(
+              backgroundColor: Color(0xffe9f1fd),
+              onPressed: () {},
+              child: Icon(
+                Icons.add,
+                color: Color(0xff1856e3),
+              ),
+            )
+          : null,
     );
   }
 }
