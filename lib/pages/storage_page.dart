@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:password_manager/models/card.dart';
 import 'package:password_manager/services/card_service.dart';
+import 'package:password_manager/util/const.dart';
 
 class StoragePage extends StatefulWidget {
   @override
@@ -8,7 +9,6 @@ class StoragePage extends StatefulWidget {
 }
 
 class _StoragePageState extends State<StoragePage> {
-  final _cardTextColor = Color(0xff1856e3);
   double screenWidth;
   double screenHeight;
   // final _selectedCardTextColor = Color(0xffffff);
@@ -35,7 +35,7 @@ class _StoragePageState extends State<StoragePage> {
               'All',
               style: TextStyle(
                   fontSize: 16.0,
-                  color: _cardTextColor,
+                  color: primaryColor,
                   fontWeight: FontWeight.bold),
             ),
             Text(
@@ -82,7 +82,7 @@ class _StoragePageState extends State<StoragePage> {
                   ),
                   trailing: Icon(
                     Icons.star_border_rounded,
-                    color: _cardTextColor,
+                    color: primaryColor,
                   ),
                 ),
               ),
@@ -108,6 +108,7 @@ class _StoragePageState extends State<StoragePage> {
 
   Widget getCard(IconData icon, String title) {
     return Card(
+      // color: primaryColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       elevation: 0.5,
       child: Container(
@@ -119,7 +120,7 @@ class _StoragePageState extends State<StoragePage> {
             Icon(
               icon,
               size: screenHeight / 19,
-              color: Color(0xff1856e3),
+              color: primaryColor,
             ),
             SizedBox(
               height: screenHeight / 50,
@@ -129,7 +130,7 @@ class _StoragePageState extends State<StoragePage> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: _cardTextColor,
+                color: primaryColor,
               ),
             ),
           ],
