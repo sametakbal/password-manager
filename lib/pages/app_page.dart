@@ -1,3 +1,4 @@
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
 import 'package:password_manager/pages/generate_page.dart';
@@ -69,13 +70,36 @@ class _AppPageState extends State<AppPage> {
         selectedLabelStyle: TextStyle(fontFamily: 'Roboto'),
       ),
       floatingActionButton: _selectedIndex == 0
-          ? FloatingActionButton(
-              backgroundColor: Color(0xffe9f1fd),
-              onPressed: () {},
-              child: Icon(
+          ? FabCircularMenu(
+              fabColor: fabColor,
+              fabOpenIcon: Icon(
                 Icons.add,
-                color: primaryColor,
+                color: Colors.white,
               ),
+              fabElevation: 2.5,
+              ringColor: fabColor,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.credit_card,
+                    ),
+                    iconSize: 50,
+                    onPressed: () {
+                      print('Home');
+                    }),
+                IconButton(
+                    icon: Icon(Icons.lock),
+                    iconSize: 50,
+                    onPressed: () {
+                      print('Favorite');
+                    }),
+                IconButton(
+                    icon: Icon(Icons.map_outlined),
+                    iconSize: 50,
+                    onPressed: () {
+                      print('Favorite');
+                    })
+              ],
             )
           : null,
     );
