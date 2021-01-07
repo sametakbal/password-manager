@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:password_manager/pages/generate_page.dart';
 import 'package:password_manager/pages/settings_page.dart';
 import 'package:password_manager/pages/storage_page.dart';
+import 'package:password_manager/util/const.dart';
 
 class AppPage extends StatefulWidget {
   @override
@@ -61,8 +62,8 @@ class _AppPageState extends State<AppPage> {
         elevation: 20.0,
         iconSize: 35.0,
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xff1856e3),
-        unselectedItemColor: Color(0xffb1cefe),
+        selectedItemColor: primaryColor,
+        unselectedItemColor: unSelectedItemColor,
         selectedFontSize: 16.0,
         onTap: _onItemTapped,
         selectedLabelStyle: TextStyle(fontFamily: 'Roboto'),
@@ -73,7 +74,7 @@ class _AppPageState extends State<AppPage> {
               onPressed: () {},
               child: Icon(
                 Icons.add,
-                color: Color(0xff1856e3),
+                color: primaryColor,
               ),
             )
           : null,
