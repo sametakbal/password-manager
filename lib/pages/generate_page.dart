@@ -1,6 +1,7 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:password_manager/models/generator_password_dto.dart';
+import 'package:password_manager/util/const.dart';
 import 'package:toast/toast.dart';
 
 class GeneratePage extends StatefulWidget {
@@ -21,103 +22,113 @@ class _GeneratePageState extends State<GeneratePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        children: [
-          passwordTextField(),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Password Length: ${gpdto.lenght} - ${getPasswordLevel()}',
-              style: TextStyle(),
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            passwordTextField(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Password Length: ${gpdto.lenght} - ${getPasswordLevel()}',
+                style: TextStyle(
+                    color: getLevelColor(true),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
+              ),
             ),
-          ),
-          passwordLengthSlider(),
-          Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            child: ListTile(
-              title: Text('Include Lowercase Characters (a,b,c,d...)'),
-              trailing: Checkbox(
-                  value: gpdto.includeLowercaseCharacters,
-                  onChanged: (bool val) {
-                    setState(() {
-                      gpdto.includeLowercaseCharacters = val;
-                    });
-                  }),
+            passwordLengthSlider(),
+            Card(
+              elevation: 0.5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              child: ListTile(
+                title: Text('Include Lowercase Characters (a,b,c,d...)'),
+                trailing: Checkbox(
+                    value: gpdto.includeLowercaseCharacters,
+                    onChanged: (bool val) {
+                      setState(() {
+                        gpdto.includeLowercaseCharacters = val;
+                      });
+                    }),
+              ),
             ),
-          ),
-          Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            child: ListTile(
-              title: Text('Inlcude Uppercase Characters (A,B,C,D...)'),
-              trailing: Checkbox(
-                  value: gpdto.includeUpperCaseCharacters,
-                  onChanged: (bool val) {
-                    setState(() {
-                      gpdto.includeUpperCaseCharacters = val;
-                    });
-                  }),
+            Card(
+              elevation: 0.5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              child: ListTile(
+                title: Text('Include Uppercase Characters (A,B,C,D...)'),
+                trailing: Checkbox(
+                    value: gpdto.includeUpperCaseCharacters,
+                    onChanged: (bool val) {
+                      setState(() {
+                        gpdto.includeUpperCaseCharacters = val;
+                      });
+                    }),
+              ),
             ),
-          ),
-          Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            child: ListTile(
-              title: Text('Inclue Numbers (1,2,3,4,5,6,7,8,9,0)'),
-              trailing: Checkbox(
-                  value: gpdto.includeNumbers,
-                  onChanged: (bool val) {
-                    setState(() {
-                      gpdto.includeNumbers = val;
-                    });
-                  }),
+            Card(
+              elevation: 0.5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              child: ListTile(
+                title: Text('Include Numbers (1,2,3,4,5,6,7,8,9,0)'),
+                trailing: Checkbox(
+                    value: gpdto.includeNumbers,
+                    onChanged: (bool val) {
+                      setState(() {
+                        gpdto.includeNumbers = val;
+                      });
+                    }),
+              ),
             ),
-          ),
-          Card(
-            elevation: 0,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            child: ListTile(
-              title: Text('Inclue Symbols (@,&,%,#...)'),
-              trailing: Checkbox(
-                  value: gpdto.includeSymbols,
-                  onChanged: (bool val) {
-                    setState(() {
-                      gpdto.includeSymbols = val;
-                    });
-                  }),
+            Card(
+              elevation: 0.5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              child: ListTile(
+                title: Text('Include Symbols (@,&,%,#...)'),
+                trailing: Checkbox(
+                    value: gpdto.includeSymbols,
+                    onChanged: (bool val) {
+                      setState(() {
+                        gpdto.includeSymbols = val;
+                      });
+                    }),
+              ),
             ),
-          ),
-          Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            child: ListTile(
-              title: Text('Exclude Ambiguous Character ({},][,~...)'),
-              trailing: Checkbox(
-                  value: gpdto.includeAmbiguousCharacters,
-                  onChanged: (bool val) {
-                    setState(() {
-                      gpdto.includeAmbiguousCharacters = val;
-                    });
-                  }),
+            Card(
+              elevation: 0.5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              child: ListTile(
+                title: Text('Exclude Ambiguous Character ({},][,~...)'),
+                trailing: Checkbox(
+                    value: gpdto.includeAmbiguousCharacters,
+                    onChanged: (bool val) {
+                      setState(() {
+                        gpdto.includeAmbiguousCharacters = val;
+                      });
+                    }),
+              ),
             ),
-          ),
-          FlatButton(
-            color: Colors.blue,
-            onPressed: getPassword,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
+            FlatButton(
+              color: Colors.blue,
+              onPressed: getPassword,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Text(
+                'Generate Password',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
             ),
-            child: Text(
-              'Generate Password',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -150,6 +161,8 @@ class _GeneratePageState extends State<GeneratePage> {
 
   Widget passwordLengthSlider() {
     return Slider(
+      inactiveColor: getLevelColor(false),
+      activeColor: getLevelColor(true),
       value: gpdto.lenght.toDouble(),
       onChanged: (double value) {
         setState(() {
@@ -181,11 +194,28 @@ class _GeneratePageState extends State<GeneratePage> {
       return 'Good';
     } else if (gpdto.lenght >= 16 && gpdto.lenght < 20) {
       return 'Very Good';
-    } else if (gpdto.lenght >= 20 && gpdto.lenght < 24) {
-      return 'Hard';
-    } else if (gpdto.lenght >= 24 && gpdto.lenght < 30) {
+    } else if (gpdto.lenght >= 20 && gpdto.lenght < 25) {
+      return 'Strong';
+    } else if (gpdto.lenght >= 25 && gpdto.lenght < 30) {
       return 'Exaggeration';
     }
     return 'Extreme!!';
+  }
+
+  Color getLevelColor(bool isActive) {
+    if (gpdto.lenght >= 5 && gpdto.lenght < 8) {
+      return isActive ? Colors.red : Colors.red[200];
+    } else if (gpdto.lenght >= 8 && gpdto.lenght < 12) {
+      return isActive ? Colors.orange : Colors.orange[200];
+    } else if (gpdto.lenght >= 12 && gpdto.lenght < 16) {
+      return isActive ? Colors.green : Colors.green[200];
+    } else if (gpdto.lenght >= 16 && gpdto.lenght < 20) {
+      return isActive ? Colors.blue : Colors.blue[200];
+    } else if (gpdto.lenght >= 20 && gpdto.lenght < 25) {
+      return isActive ? primaryColor : Colors.blue[200];
+    } else if (gpdto.lenght >= 25 && gpdto.lenght < 30) {
+      return isActive ? Colors.grey : Colors.grey[200];
+    }
+    return isActive ? Colors.black : Colors.grey[200];
   }
 }
