@@ -14,8 +14,7 @@ class AppPage extends StatefulWidget {
 class _AppPageState extends State<AppPage> {
   int _selectedIndex = 0;
 
-  TextStyle optionStyle = TextStyle(
-      fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Roboto');
+  TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   List<Widget> _widgetOptions = <Widget>[
     StoragePage(),
@@ -67,34 +66,36 @@ class _AppPageState extends State<AppPage> {
         unselectedItemColor: unSelectedItemColor,
         selectedFontSize: 16.0,
         onTap: _onItemTapped,
-        selectedLabelStyle: TextStyle(fontFamily: 'Roboto'),
       ),
       floatingActionButton: _selectedIndex == 0
           ? FabCircularMenu(
-              fabColor: fabColor,
+            fabOpenColor: Colors.white,
+            animationDuration: const Duration(milliseconds: 500),
+              fabColor: primaryColor,
               fabOpenIcon: Icon(
                 Icons.add,
                 color: Colors.white,
               ),
               fabElevation: 2.5,
-              ringColor: fabColor,
+              ringColor: primaryColor,
               children: [
                 IconButton(
                     icon: Icon(
                       Icons.credit_card,
+                      color: Colors.white,
                     ),
                     iconSize: 50,
                     onPressed: () {
                       print('Home');
                     }),
                 IconButton(
-                    icon: Icon(Icons.lock),
+                    icon: Icon(Icons.lock,color: Colors.white,),
                     iconSize: 50,
                     onPressed: () {
                       print('Favorite');
                     }),
                 IconButton(
-                    icon: Icon(Icons.map_outlined),
+                    icon: Icon(Icons.map_outlined,color: Colors.white,),
                     iconSize: 50,
                     onPressed: () {
                       print('Favorite');

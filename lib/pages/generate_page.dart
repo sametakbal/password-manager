@@ -124,7 +124,7 @@ class _GeneratePageState extends State<GeneratePage> {
               child: Text(
                 'Generate Password',
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontFamily: 'Comfortaa'),
               ),
             ),
           ],
