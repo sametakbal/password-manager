@@ -4,8 +4,7 @@ class PaymentCard {
   String cardNumber;
   String cardHolderName;
   int cvc;
-  int month;
-  int year;
+  String monthYear;
   bool isFavorite;
   PaymentCard({
     this.id,
@@ -13,8 +12,7 @@ class PaymentCard {
     this.cardNumber,
     this.cardHolderName,
     this.cvc,
-    this.month,
-    this.year,
+    this.monthYear,
     this.isFavorite,
   });
 }
