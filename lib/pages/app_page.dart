@@ -69,8 +69,8 @@ class _AppPageState extends State<AppPage> {
       ),
       floatingActionButton: _selectedIndex == 0
           ? FabCircularMenu(
-            fabOpenColor: Colors.white,
-            animationDuration: const Duration(milliseconds: 500),
+              fabOpenColor: Colors.white,
+              animationDuration: const Duration(milliseconds: 500),
               fabColor: primaryColor,
               fabOpenIcon: Icon(
                 Icons.add,
@@ -86,16 +86,22 @@ class _AppPageState extends State<AppPage> {
                     ),
                     iconSize: 50,
                     onPressed: () {
-                      print('Home');
+                      Navigator.pushNamed(context, '/paymentCard');
                     }),
                 IconButton(
-                    icon: Icon(Icons.lock,color: Colors.white,),
+                    icon: Icon(
+                      Icons.lock,
+                      color: Colors.white,
+                    ),
                     iconSize: 50,
                     onPressed: () {
                       print('Favorite');
                     }),
                 IconButton(
-                    icon: Icon(Icons.map_outlined,color: Colors.white,),
+                    icon: Icon(
+                      Icons.map_outlined,
+                      color: Colors.white,
+                    ),
                     iconSize: 50,
                     onPressed: () {
                       print('Favorite');
